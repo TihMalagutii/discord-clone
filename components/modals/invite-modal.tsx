@@ -69,6 +69,7 @@ const InviteModal = () => {
                         disabled={isLoading}
                         className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
                         value={inviteUrl}
+                        readOnly
                     />
                     <Button disabled={isLoading} size="icon" onClick={onCopy}>
                         {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
