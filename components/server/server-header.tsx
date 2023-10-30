@@ -3,7 +3,7 @@
 import { ServerWithMembersWithProfiles } from "@/types"
 import { MemberRole } from "@prisma/client"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { ChevronDown, LogOut, PlusCircle, Settings, Trash, UserPlus, Users } from "lucide-react"
+import { ChevronDown, LogOut, PlusCircle, Settings, Trash, User, UserPlus, Users } from "lucide-react"
 import { useModal } from "@/hooks/use-modal-store"
 
 interface ServerHeaderProps {
@@ -39,6 +39,11 @@ export const ServerHeader = ({
                         <UserPlus className="h-4 w-4 ml-auto" />
                     </DropdownMenuItem>
                 )}
+
+                <DropdownMenuItem onClick={() => onOpen("serverProfile", { server })} className=" px-3 py-2 text-sm cursor-pointer">
+                    Server Profile
+                    <User className="h-4 w-4 ml-auto" />
+                </DropdownMenuItem>
 
                 {isAdmin && (
                     <DropdownMenuItem onClick={() => onOpen("editServer", { server })} className="px-3 py-2 text-sm cursor-pointer">

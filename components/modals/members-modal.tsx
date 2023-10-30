@@ -107,7 +107,7 @@ const MembersModal = () => {
                 <DialogDescription
                     className="text-center text-zinc-500"
                 >
-                    {server?.members?.length} Members
+                    {membersCount(server?.members)}
                 </DialogDescription>
             </DialogHeader>
 
@@ -117,13 +117,10 @@ const MembersModal = () => {
 
                         <UserAvatar src={member.profile.imageUrl} />
                         <div className="flex flex-col gap-y-1">
-                            <div className="text-xs font-semibold flex items-center gap-x-1">
+                            <div className="font-semibold flex items-center gap-x-1">
                                 {member.profile.name}
                                 {roleIconMap[member.role]}
                             </div>
-                            <p className="text-xs text-zinc-500">
-                                {member.profile.email}
-                            </p>
                         </div>
 
                         {server.profileId !== member.profileId && loadingId !== member.id && (
@@ -188,3 +185,20 @@ const MembersModal = () => {
 }
 
 export default MembersModal
+
+function membersCount(members: unknown[] | null) {
+
+    if(Array.isArray(members)){
+
+        const count = members.length
+        const isPlural = count !== 1
+
+        return [
+            count,
+            ' ',
+            isPlural ? 'Members' : 'Member'
+        ].join('')
+    }
+
+    return ''
+}
